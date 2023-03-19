@@ -1,12 +1,12 @@
 var request=new XMLHttpRequest();
-request.open("GET","https://restcountries.com/v2/all");
-
+request.open("GET","https://restcountries.com/v2/all")
 request.send();
-
 request.onload=function(){
-var result=JSON.parse(request.response);
+    var res=JSON.parse(request.response);
+    console.log(res);
+    var result=res.map((ele)=>ele.population)
+    var pop=result.reduce((ac,cv)=>ac+cv,0)
 
-for(let i=0;i<result.length;i++){
-    console.log(result[i].name);
-}
+    console.log(pop)
+
 }
